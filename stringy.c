@@ -26,6 +26,19 @@ char * stringcopy(char *d, char *s) {
     return d;
 }
 
+char * stringncopy(char *d, char *s, int len) {
+    int x = 0;
+    while (x < len) {
+        *d = *s;
+        d++;
+        s++;
+        x++;
+    }
+    *d = '\0';
+    d -= len;
+    return d;
+}
+
 char * stringconcat(char *s1, char *s2) {
     int s1len = stringlength(s1);
     int s2len = stringlength(s2);
@@ -82,6 +95,22 @@ int main() {
     printf("Showing String 1: %s\n", cp1);
     printf("Showing String 2: %s\n", cp2);
     printf("String 1 after String Copy (strcpy): %s\n", stringcopy(cp1, cp2));
+    printf("~~~~~~~~~~~~~~strncpy~~~~~~~~~~~~~\n");
+    char cpn1[] = "cat";
+    char cpn2[] = "lovecats";
+    char cpn3[] = "cat";
+    char cpn4[] = "lov";
+    char cpn5[] = "cat";
+    char cpn6[] = "lo";
+    printf("Showing String 1: %s\n", cpn1);
+    printf("Showing String 2: %s\n", cpn2);
+    printf("String 1 after String Copy (6 chars) (strcpy): %s\n", stringncopy(cpn1, cpn2, 6));
+    printf("Showing String 3: %s\n", cpn3);
+    printf("Showing String 4: %s\n", cpn4);
+    printf("String 3 after String Copy (3 chars) (strcpy): %s\n", stringncopy(cpn1, cpn2, 3));
+    printf("Showing String 5: %s\n", cpn5);
+    printf("Showing String 6: %s\n", cpn6);
+    printf("String 5 after String Copy (2 chars) (strcpy): %s\n", stringncopy(cpn1, cpn2, 2));
     printf("~~~~~~~~~~~~~~strcat~~~~~~~~~~~~~\n");
     printf("Showing String 1: %s\n", cat1);
     printf("Showing String 2: %s\n", cat2);
